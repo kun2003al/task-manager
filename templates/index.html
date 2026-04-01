@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <form method="POST" action="/add">
+        <input type="text" name="task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task[1] }}
+
+    <form method="POST" action="/update/{{ task[0] }}" style="display:inline;">
+        <input type="text" name="updated_task" required>
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/delete/{{ task[0] }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
